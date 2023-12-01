@@ -1,0 +1,12 @@
+.container {
+  width: 100%;
+  height: 100vh;
+}
+
+.side-bar {
+  padding: 8px;
+}
+
+.side-content {
+  padding: 16px;
+}
