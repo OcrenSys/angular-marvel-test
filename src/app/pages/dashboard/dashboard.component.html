@@ -1,1 +1,5 @@
-<p>dashboard works!</p>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+  @for(item of data; track item){
+  <app-card [item]="item"></app-card>
+  }
+</div>
