@@ -9,4 +9,21 @@ export const routes: Routes = [
         (module) => module.DashboardComponent
       ),
   },
+
+  {
+    path: 'comics',
+    pathMatch: 'full',
+    loadComponent: (): any =>
+      import('./pages/comics/comics.component').then(
+        (module) => module.ComicsComponent
+      ),
+  },
+  {
+    path: 'characters',
+    pathMatch: 'full',
+    loadComponent: (): any =>
+      import('./pages/characters/characters.component').then(
+        (module) => module.CharactersComponent
+      ),
+  },
 ];
