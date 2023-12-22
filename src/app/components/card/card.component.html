@@ -1,0 +1,16 @@
+<div class="text-sm mb-4 w-auto md:w-full">
+  <div
+    class="w-full aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75"
+  >
+    <img
+      [srcset]="item.image"
+      alt="Models sitting back to back, wearing Basic Tee in black and bone."
+      class="object-cover object-center"
+    />
+  </div>
+  <a href="#" class="mt-2 block font-medium text-gray-300">
+    <span class="absolute inset-0 z-10" aria-hidden="true"></span>
+    {{ item.name }}
+    <p class="text-sm text-gray-400 font-light">{{ item.subTitle }}</p>
+  </a>
+</div>
