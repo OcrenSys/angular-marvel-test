@@ -14,9 +14,7 @@ export class DashboardComponent implements OnInit {
   constructor(private readonly _comicService: ComicService) {}
 
   ngOnInit(): void {
-    this._comicService._get<TComic[]>().subscribe((response) => {
-      console.log('comics response from dashboard page....\n', response);
-    });
+    this._comicService._get<TComic[]>();
   }
 
   protected data: TComic[] = [
@@ -166,5 +164,5 @@ export class DashboardComponent implements OnInit {
         returned: 0,
       },
     },
-  ];
+  ];  
 }

@@ -6,8 +6,7 @@ export const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    providers: [provideHttpClient(),  ComicService], // <--
-
+    providers: [ComicService],
     loadComponent: (): any =>
       import('./pages/dashboard/dashboard.component').then(
         (module) => module.DashboardComponent
@@ -37,7 +36,7 @@ export const routes: Routes = [
         (module) => module.CharactersComponent
       ),
   },
-  
+
   {
     path: 'characters/:id',
     pathMatch: 'full',
