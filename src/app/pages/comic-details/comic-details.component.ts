@@ -154,11 +154,4 @@ export class ComicDetailsComponent {
     },
   };
 
-  protected data: TRequest<TComic> = {
-    offset: 0,
-    limit: 20,
-    total: 1,
-    count: 1,
-    results: [this.comic],
-  };
 }
