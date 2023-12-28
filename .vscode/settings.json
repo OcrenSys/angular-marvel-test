@@ -1,3 +1,7 @@
 {
-  "conventionalCommits.scopes": ["settings", "layout"]
+  "conventionalCommits.scopes": [
+    "settings",
+    "layout",
+    "interceptors"
+  ]
 }

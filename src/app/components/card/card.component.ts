@@ -9,9 +9,5 @@ import { TComic } from '../../shared/types/comic.type';
   styleUrl: './card.component.css',
 })
 export class CardComponent {
-  @Input() item: TComic = {
-    name: '',
-    image: '',
-    subTitle: '',
-  };
+  @Input() item: TComic | undefined = undefined;
 }
