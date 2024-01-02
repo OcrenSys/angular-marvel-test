@@ -1,5 +1,7 @@
-import { TCharacters } from "./character.type";
-import { TStories } from "./story.type";
+import { TItem } from "./item.type";
+import { TStory } from "./story.type";
+import { TThumbnail } from "./thumbnail.type";
+import { TUrl } from "./url.type";
 
 export type TComic = {
   id: number;
@@ -18,37 +20,26 @@ export type TComic = {
   pageCount: number;
   textObjects: any[];
   resourceURI: string;
-  urls: Url[];
+  urls: TUrl[];
   series: Series;
   variants: Series[];
   collections: any[];
   collectedIssues: any[];
   dates: Date[];
   prices: Price[];
-  thumbnail: Thumbnail;
+  thumbnail: TThumbnail;
   images: any[];
   creators: Creators;
-  characters: TCharacters;
-  stories: TStories;
-  events: TCharacters;
+  characters: any;
+  stories: TStory;
+  events: any;
 }
 
 interface Creators {
   available: number;
   collectionURI: string;
-  items: Item[];
+  items: TItem[];
   returned: number;
-}
-
-interface Item {
-  resourceURI: string;
-  name: string;
-  role: string;
-}
-
-interface Thumbnail {
-  path: string;
-  extension: string;
 }
 
 interface Price {
@@ -64,9 +55,4 @@ interface Date {
 interface Series {
   resourceURI: string;
   name: string;
-}
-
-interface Url {
-  type: string;
-  url: string;
 }

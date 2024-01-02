@@ -1,4 +1,4 @@
-export type TStories = {
+export type TStory = {
   available: number;
   collectionURI: string;
   items: Item[];

@@ -2,7 +2,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { Routes } from '@angular/router';
 import { ComicService } from './services/comics/comic.service';
 
-export const routes: Routes = [
+export const AppRoutes: Routes = [
   {
     path: '',
     pathMatch: 'full',

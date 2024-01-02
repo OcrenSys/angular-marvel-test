@@ -1,4 +1,3 @@
-import { isDevMode } from '@angular/core';
 import { createReducer, on } from '@ngrx/store';
 import * as ComicsActions from '../actions/comics.action';
 import { ComicState } from '../../shared/interfaces/comic.state';
