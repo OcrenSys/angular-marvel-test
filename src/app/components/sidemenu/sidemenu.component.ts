@@ -21,5 +21,20 @@ export class SideMenuComponent {
       isActive: false,
       href: 'characters',
     },
+    {
+      label: 'Stories',
+      isActive: false,
+      href: 'stories',
+    },
+    {
+      label: 'Events',
+      isActive: false,
+      href: 'events',
+    },
+    {
+      label: 'Creators',
+      isActive: false,
+      href: 'creators',
+    },
   ];
 }
