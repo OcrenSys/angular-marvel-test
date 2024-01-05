@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+#This command is applied to format all the files #
+# npm run format &&  ng lint --fix  && git add .
+
+# This command is applied to format only the modified files
+npx pretty-quick --pattern "src/**/*.*(ts|json|html|scss)" --staged  && ng lint --fix
