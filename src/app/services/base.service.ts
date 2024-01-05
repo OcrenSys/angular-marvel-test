@@ -1,14 +1,14 @@
 import { environment } from '../../environments/environment.development';
 
 export class BaseService<T> {
-  protected url = '';
+	protected url = '';
 
-  constructor(_url: string = '') {
-    this.url = _url;
-  }
+	constructor(_url: string = '') {
+		this.url = _url;
+	}
 
-  protected Url(_url?: String): string {
-    const { BASE_URL, API } = environment;
-    return `${BASE_URL}${API}${_url || this.url}`;
-  }
+	protected Url(_url?: String): string {
+		const { BASE_URL, API } = environment;
+		return `${BASE_URL}${API}${_url || this.url}`;
+	}
 }

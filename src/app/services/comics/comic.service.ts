@@ -6,20 +6,20 @@ import { TComic } from '../../shared/types/comic.type';
 import { Routes } from '../../shared/routes/route';
 
 @Injectable({
-  providedIn: 'root',
+	providedIn: 'root'
 })
 export class ComicService extends BaseService<TComic> {
-  protected readonly _httpClient: HttpClient = inject(HttpClient);
-  
-  constructor() {
-    super(Routes.comics.list());
-  }
+	protected readonly _httpClient: HttpClient = inject(HttpClient);
 
-  _get<R>(): Observable<R> {
-    return this._httpClient.get<R>(this.Url());
-  }
+	constructor() {
+		super(Routes.comics.list());
+	}
 
-  _getById<T, R>(id: string): Observable<R> {
-    return this._httpClient.get<R>(this.Url(Routes.comics.details(id)));
-  }
+	_get<R>(): Observable<R> {
+		return this._httpClient.get<R>(this.Url());
+	}
+
+	_getById<T, R>(id: string): Observable<R> {
+		return this._httpClient.get<R>(this.Url(Routes.comics.details(id)));
+	}
 }

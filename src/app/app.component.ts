@@ -32,10 +32,9 @@ import { SideMenuComponent } from './components/sidemenu/sidemenu.component';
 	styleUrl: './app.component.css'
 })
 export class AppComponent implements OnDestroy {
-	protected title = 'Ocrensys';
 	protected device = signal<'mobile' | 'desktop'>('mobile');
 	protected opened = signal<boolean>(false);
-	protected mobileQuery: MediaQueryList;
+	protected mobileQuery!: MediaQueryList;
 	private _mobileQueryListener: (event: MediaQueryListEvent) => void;
 
 	constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {

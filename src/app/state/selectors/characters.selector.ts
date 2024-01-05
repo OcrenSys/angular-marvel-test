@@ -5,11 +5,11 @@ import { CharacterState } from '../../shared/interfaces/character.state';
 const characterSelected = (state: AppState) => state.characters;
 
 export const CharacterSelector = createSelector(
-  characterSelected,
-  (state: CharacterState) => state.characters
+	characterSelected,
+	(state: CharacterState) => state.characters
 );
 
 export const LoadingSelector = createSelector(
-  characterSelected,
-  (state: CharacterState) => state.loading
+	characterSelected,
+	(state: CharacterState) => state.loading
 );

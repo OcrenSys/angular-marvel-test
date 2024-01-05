@@ -7,22 +7,22 @@ import { TComic } from '../../shared/types/comic.type';
 
 @Injectable()
 export class ComicsEffect {
-  private readonly _action$ = inject(Actions);
-  private readonly _comicService = inject(ComicService);
+	private readonly _action$ = inject(Actions);
+	private readonly _comicService = inject(ComicService);
 
-  getComicsEffect$ = createEffect(() =>
-    this._action$.pipe(
-      ofType(ComicsAction.GET_COMIC),
-      mergeMap(() =>
-        this._comicService._get().pipe(
-          map(({ data: { results } }: any) => results),
-          map((comics: TComic[]) => ({
-            type: ComicsAction.STORE_COMIC,
-            comics,
-          })),
-          catchError(() => EMPTY)
-        )
-      )
-    )
-  );
+	getComicsEffect$ = createEffect(() =>
+		this._action$.pipe(
+			ofType(ComicsAction.GET_COMIC),
+			mergeMap(() =>
+				this._comicService._get().pipe(
+					map(({ data: { results } }: any) => results),
+					map((comics: TComic[]) => ({
+						type: ComicsAction.STORE_COMIC,
+						comics
+					})),
+					catchError(() => EMPTY)
+				)
+			)
+		)
+	);
 }

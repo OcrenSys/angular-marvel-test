@@ -14,13 +14,13 @@ import { ComicsEffect } from './state/effects/comics.effect';
 import { AppEffects } from './state/effects/app.effects';
 
 export const appConfig: ApplicationConfig = {
-  providers: [
-    provideRouter(AppRoutes),
-    provideHttpClient(withInterceptors([ApiInterceptor])),
-    provideClientHydration(),
-    provideAnimations(),
-    provideStore(AppReducers),
-    provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
-    provideEffects(AppEffects),
-  ],
+	providers: [
+		provideRouter(AppRoutes),
+		provideHttpClient(withInterceptors([ApiInterceptor])),
+		provideClientHydration(),
+		provideAnimations(),
+		provideStore(AppReducers),
+		provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
+		provideEffects(AppEffects)
+	]
 };

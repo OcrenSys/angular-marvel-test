@@ -1,6 +1,6 @@
 import { TComic } from '../types/comic.type';
 
 export interface ComicState {
-  comics: TComic[];
-  loading: boolean;
+	comics: TComic[];
+	loading: boolean;
 }

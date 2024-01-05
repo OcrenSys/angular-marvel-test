@@ -1,9 +1,9 @@
-import { TResult } from "./result.type";
+import { TResult } from './result.type';
 
 export type TData = {
-    offset: number;
-    limit: number;
-    total: number;
-    count: number;
-    results: TResult[];
-  }
+	offset: number;
+	limit: number;
+	total: number;
+	count: number;
+	results: TResult[];
+};

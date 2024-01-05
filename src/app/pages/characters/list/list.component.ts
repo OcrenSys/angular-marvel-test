@@ -10,19 +10,19 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TruncatePipe } from '../../../pipes/truncate/truncate.pipe';
 
 @Component({
-  selector: 'app-characters-list',
-  standalone: true,
-  imports: [CommonModule, TruncatePipe, MatProgressSpinnerModule],
-  templateUrl: './list.component.html',
-  styleUrl: './list.component.css',
+	selector: 'app-characters-list',
+	standalone: true,
+	imports: [CommonModule, TruncatePipe, MatProgressSpinnerModule],
+	templateUrl: './list.component.html',
+	styleUrl: './list.component.css'
 })
 export class CharactersListComponent implements OnInit {
-  private readonly _store = inject(Store);
-  protected characters$: Observable<TCharacters[]> =
-    this._store.select(CharacterSelector);
-  protected loading$: Observable<boolean> = this._store.select(LoadingSelector);
+	private readonly _store = inject(Store);
+	protected characters$: Observable<TCharacters[]> =
+		this._store.select(CharacterSelector);
+	protected loading$: Observable<boolean> = this._store.select(LoadingSelector);
 
-  ngOnInit() {
-    this._store.dispatch(GetCharactersAction());
-  }
+	ngOnInit() {
+		this._store.dispatch(GetCharactersAction());
+	}
 }

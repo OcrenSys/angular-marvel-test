@@ -7,22 +7,22 @@ import { TCharacters } from '../../shared/types/character.type';
 
 @Injectable()
 export class CharacterEffect {
-  private readonly _action$ = inject(Actions);
-  private readonly _characterService = inject(CharacterService);
+	private readonly _action$ = inject(Actions);
+	private readonly _characterService = inject(CharacterService);
 
-  getCharacterEffect$ = createEffect(() =>
-    this._action$.pipe(
-      ofType(CharacterAction.GET_CHARACTERS),
-      mergeMap(() =>
-        this._characterService._get().pipe(
-          map(({ data: { results } }: any) => results),
-          map((characters: TCharacters[]) => ({
-            type: CharacterAction.STORE_CHARACTERS,
-            characters,
-          })),
-          catchError(() => EMPTY)
-        )
-      )
-    )
-  );
+	getCharacterEffect$ = createEffect(() =>
+		this._action$.pipe(
+			ofType(CharacterAction.GET_CHARACTERS),
+			mergeMap(() =>
+				this._characterService._get().pipe(
+					map(({ data: { results } }: any) => results),
+					map((characters: TCharacters[]) => ({
+						type: CharacterAction.STORE_CHARACTERS,
+						characters
+					})),
+					catchError(() => EMPTY)
+				)
+			)
+		)
+	);
 }
