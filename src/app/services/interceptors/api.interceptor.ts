@@ -1,11 +1,6 @@
-import {
-	HttpEvent,
-	HttpHandlerFn,
-	HttpInterceptorFn,
-	HttpParams,
-	HttpRequest
-} from '@angular/common/http';
+import { HttpEvent, HttpHandlerFn, HttpRequest } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
+
 import { environment } from '../../../environments/environment.development';
 
 export const ApiInterceptor = (
@@ -18,5 +13,9 @@ export const ApiInterceptor = (
 		params: req.params.set('apikey', PUBLIC_KEY).set('hash', HASH).set('ts', TS)
 	});
 
-	return next(reqClone).pipe(tap((event: HttpEvent<any>) => {}));
+	return next(reqClone).pipe(
+		tap((event: HttpEvent<unknown>) => {
+			console.log(event);
+		})
+	);
 };

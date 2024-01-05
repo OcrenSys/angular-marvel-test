@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+
 import { TComic } from '../../shared/types/comic.type';
 
 export const ComicsAction = {

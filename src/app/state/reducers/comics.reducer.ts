@@ -1,6 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
-import * as ComicsActions from '../actions/comics.action';
+
 import { ComicState } from '../../shared/interfaces/comic.state';
+import * as ComicsActions from '../actions/comics.action';
 
 const initialState: ComicState = {
 	comics: [],

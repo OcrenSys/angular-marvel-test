@@ -11,8 +11,10 @@
 			"extends": [
 				"plugin:@angular-eslint/recommended",
 				"plugin:@angular-eslint/template/process-inline-templates",
+				"plugin:@typescript-eslint/recommended",
 				"plugin:prettier/recommended"
 			],
+			 "plugins": ["simple-import-sort"],
 			"rules": {
 				"@angular-eslint/directive-selector": [
 					"error",
@@ -30,14 +32,9 @@
 						"style": "kebab-case"
 					}
 				],
-				"@typescript-eslint/unbound-method": [
-					"error",
-					{
-						"ignoreStatic": true
-					}
-				],
-				"@typescript-eslint/explicit-function-return-type": ["error"],
-				"@typescript-eslint/no-useless-constructor": ["error"]
+				"@typescript-eslint/no-useless-constructor": ["error"],
+				"simple-import-sort/imports": "error",
+                "simple-import-sort/exports": "error"
 			}
 		},
 		{

@@ -1,13 +1,13 @@
 import { Routes } from '@angular/router';
+
 import { ComicService } from './services/comics/comic.service';
-import { StoryDetailsComponent } from './pages/stories/details/details.component';
 
 export const AppRoutes: Routes = [
 	{
 		path: '',
 		pathMatch: 'full',
 		providers: [ComicService],
-		loadComponent: (): any =>
+		loadComponent: () =>
 			import(
 				/* webpackChunkName: "__Chunk__DashboardComponent__" */
 				'./pages/dashboards/dashboard/dashboard.component'
@@ -16,7 +16,7 @@ export const AppRoutes: Routes = [
 	{
 		path: 'comics',
 		pathMatch: 'full',
-		loadComponent: (): any =>
+		loadComponent: () =>
 			import(
 				/* webpackChunkName: "__Chunk__ComicsListComponent__" */
 				'./pages/comics/list/list.component'
@@ -25,7 +25,7 @@ export const AppRoutes: Routes = [
 	{
 		path: 'comics/:id',
 		pathMatch: 'full',
-		loadComponent: (): any =>
+		loadComponent: () =>
 			import(
 				/* webpackChunkName: "__Chunk__ComicDetailsComponent__" */
 				'./pages/comics/details/details.component'
@@ -34,7 +34,7 @@ export const AppRoutes: Routes = [
 	{
 		path: 'characters',
 		pathMatch: 'full',
-		loadComponent: (): any =>
+		loadComponent: () =>
 			import(
 				/* webpackChunkName: "__Chunk__CharactersListComponent__" */
 				'./pages/characters/list/list.component'
@@ -43,7 +43,7 @@ export const AppRoutes: Routes = [
 	{
 		path: 'characters/:id',
 		pathMatch: 'full',
-		loadComponent: (): any =>
+		loadComponent: () =>
 			import(
 				/* webpackChunkName: "__Chunk__CharacterDetailsComponent__" */
 				'./pages/characters/details/details.component'
@@ -52,7 +52,7 @@ export const AppRoutes: Routes = [
 	{
 		path: 'stories',
 		pathMatch: 'full',
-		loadComponent: (): any =>
+		loadComponent: () =>
 			import(
 				/* webpackChunkName: "__Chunk__CharactersListComponent__" */
 				'./pages/stories/list/list.component'
@@ -61,7 +61,7 @@ export const AppRoutes: Routes = [
 	{
 		path: 'stories/:id',
 		pathMatch: 'full',
-		loadComponent: (): any =>
+		loadComponent: () =>
 			import(
 				/* webpackChunkName: "__Chunk__CharacterDetailsComponent__" */
 				'./pages/stories/details/details.component'
@@ -70,7 +70,7 @@ export const AppRoutes: Routes = [
 	{
 		path: 'events',
 		pathMatch: 'full',
-		loadComponent: (): any =>
+		loadComponent: () =>
 			import(
 				/* webpackChunkName: "__Chunk__CharactersListComponent__" */
 				'./pages/events/list/list.component'
@@ -79,7 +79,7 @@ export const AppRoutes: Routes = [
 	{
 		path: 'events/:id',
 		pathMatch: 'full',
-		loadComponent: (): any =>
+		loadComponent: () =>
 			import(
 				/* webpackChunkName: "__Chunk__CharacterDetailsComponent__" */
 				'./pages/events/details/details.component'
@@ -88,7 +88,7 @@ export const AppRoutes: Routes = [
 	{
 		path: 'creators',
 		pathMatch: 'full',
-		loadComponent: (): any =>
+		loadComponent: () =>
 			import(
 				/* webpackChunkName: "__Chunk__CharactersListComponent__" */
 				'./pages/creators/list/list.component'
@@ -97,7 +97,7 @@ export const AppRoutes: Routes = [
 	{
 		path: 'creators/:id',
 		pathMatch: 'full',
-		loadComponent: (): any =>
+		loadComponent: () =>
 			import(
 				/* webpackChunkName: "__Chunk__CharacterDetailsComponent__" */
 				'./pages/creators/details/details.component'

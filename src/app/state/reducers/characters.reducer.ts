@@ -1,4 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
+
 import { CharacterState } from '../../shared/interfaces/character.state';
 import * as CharacterAction from '../actions/characters.action';
 

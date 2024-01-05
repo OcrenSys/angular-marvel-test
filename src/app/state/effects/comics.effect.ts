@@ -1,9 +1,10 @@
-import { Injectable, inject } from '@angular/core';
-import { ComicService } from '../../services/comics/comic.service';
+import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { catchError, EMPTY, map, mergeMap } from 'rxjs';
+
+import { ComicService } from '../../services/comics/comic.service';
+import { TRootObject } from '../../shared/types/root.type';
 import { ComicsAction } from '../actions/comics.action';
-import { EMPTY, catchError, map, mergeMap } from 'rxjs';
-import { TComic } from '../../shared/types/comic.type';
 
 @Injectable()
 export class ComicsEffect {
@@ -15,11 +16,15 @@ export class ComicsEffect {
 			ofType(ComicsAction.GET_COMIC),
 			mergeMap(() =>
 				this._comicService._get().pipe(
-					map(({ data: { results } }: any) => results),
-					map((comics: TComic[]) => ({
-						type: ComicsAction.STORE_COMIC,
-						comics
-					})),
+					map((root: unknown) => {
+						const {
+							data: { results }
+						} = root as TRootObject;
+						return {
+							type: ComicsAction.STORE_COMIC,
+							comics: results
+						};
+					}),
 					catchError(() => EMPTY)
 				)
 			)

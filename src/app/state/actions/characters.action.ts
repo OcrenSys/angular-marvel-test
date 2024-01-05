@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+
 import { TCharacters } from '../../shared/types/character.type';
 
 export const CharacterAction = {

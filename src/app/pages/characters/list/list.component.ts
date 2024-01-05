@@ -1,13 +1,14 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { Component, inject, OnInit } from '@angular/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+
+import { TruncatePipe } from '../../../pipes/truncate/truncate.pipe';
 import { TCharacters } from '../../../shared/types/character.type';
+import { GetCharactersAction } from '../../../state/actions/characters.action';
 import { CharacterSelector } from '../../../state/selectors/characters.selector';
 import { LoadingSelector } from '../../../state/selectors/characters.selector';
-import { GetCharactersAction } from '../../../state/actions/characters.action';
-import { CommonModule } from '@angular/common';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { TruncatePipe } from '../../../pipes/truncate/truncate.pipe';
 
 @Component({
 	selector: 'app-characters-list',

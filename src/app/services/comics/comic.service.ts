@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { BaseService } from '../base.service';
-import { TComic } from '../../shared/types/comic.type';
+
 import { Routes } from '../../shared/routes/route';
+import { BaseService } from '../base.service';
 
 @Injectable({
 	providedIn: 'root'
 })
-export class ComicService extends BaseService<TComic> {
+export class ComicService extends BaseService {
 	protected readonly _httpClient: HttpClient = inject(HttpClient);
 
 	constructor() {
@@ -19,7 +19,7 @@ export class ComicService extends BaseService<TComic> {
 		return this._httpClient.get<R>(this.Url());
 	}
 
-	_getById<T, R>(id: string): Observable<R> {
-		return this._httpClient.get<R>(this.Url(Routes.comics.details(id)));
+	_getById<T>(id: string): Observable<T> {
+		return this._httpClient.get<T>(this.Url(Routes.comics.details(id)));
 	}
 }

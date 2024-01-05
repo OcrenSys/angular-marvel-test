@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+
 import { TComic } from '../../shared/types/comic.type';
 
 @Component({

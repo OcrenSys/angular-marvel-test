@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+
 import { CardComponent } from '../../../components/card/card.component';
-import { TComic } from '../../../shared/types/comic.type';
 import { ComicService } from '../../../services/comics/comic.service';
+import { TComic } from '../../../shared/types/comic.type';
 
 @Component({
 	selector: 'app-dashboard',

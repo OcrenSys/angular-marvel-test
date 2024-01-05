@@ -1,17 +1,16 @@
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { ApplicationConfig, isDevMode } from '@angular/core';
-import { provideRouter } from '@angular/router';
-
-import { AppRoutes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { ApiInterceptor } from './services/interceptors/api.interceptor';
-import { provideStore } from '@ngrx/store';
-import { AppReducers } from './state/reducers/app.reducers';
-import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { provideRouter } from '@angular/router';
 import { provideEffects } from '@ngrx/effects';
-import { ComicsEffect } from './state/effects/comics.effect';
+import { provideStore } from '@ngrx/store';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
+
+import { AppRoutes } from './app.routes';
+import { ApiInterceptor } from './services/interceptors/api.interceptor';
 import { AppEffects } from './state/effects/app.effects';
+import { AppReducers } from './state/reducers/app.reducers';
 
 export const appConfig: ApplicationConfig = {
 	providers: [

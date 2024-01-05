@@ -1,9 +1,10 @@
-import { Injectable, inject } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { CharacterAction } from '../actions/characters.action';
+import { catchError, EMPTY, map, mergeMap } from 'rxjs';
+
 import { CharacterService } from '../../services/character/character.service';
-import { EMPTY, catchError, map, mergeMap } from 'rxjs';
-import { TCharacters } from '../../shared/types/character.type';
+import { TRootObject } from '../../shared/types/root.type';
+import { CharacterAction } from '../actions/characters.action';
 
 @Injectable()
 export class CharacterEffect {
@@ -15,11 +16,15 @@ export class CharacterEffect {
 			ofType(CharacterAction.GET_CHARACTERS),
 			mergeMap(() =>
 				this._characterService._get().pipe(
-					map(({ data: { results } }: any) => results),
-					map((characters: TCharacters[]) => ({
-						type: CharacterAction.STORE_CHARACTERS,
-						characters
-					})),
+					map((root: unknown) => {
+						const {
+							data: { results }
+						} = root as TRootObject;
+						return {
+							type: CharacterAction.STORE_CHARACTERS,
+							characters: results
+						};
+					}),
 					catchError(() => EMPTY)
 				)
 			)
