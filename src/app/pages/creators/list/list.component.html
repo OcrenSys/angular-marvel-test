@@ -1,1 +1,11 @@
-<p>creators list works!</p>
+@if (loading$ | async) {
+<div class="flex justify-center mt-8">
+	<mat-spinner></mat-spinner>
+</div>
+} @else {
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+	@for (creator of creators$ | async; track creator.id) {
+	<app-card [item]="getItem(creator)"></app-card>
+	}
+</div>
+}

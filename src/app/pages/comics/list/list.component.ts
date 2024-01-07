@@ -4,6 +4,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
+import { CardComponent } from '../../../components/card/card.component';
+import { getSrc } from '../../../shared/helpers/placeholders.helper';
+import { CardItem } from '../../../shared/interfaces/card.item';
 import { TComic } from '../../../shared/types/comic.type';
 import { GetComicsAction } from '../../../state/actions/comics.action';
 import {
@@ -14,7 +17,7 @@ import {
 @Component({
 	selector: 'app-comics-list',
 	standalone: true,
-	imports: [CommonModule, MatProgressSpinnerModule],
+	imports: [CommonModule, MatProgressSpinnerModule, CardComponent],
 	templateUrl: './list.component.html',
 	styleUrl: './list.component.css'
 })
@@ -25,5 +28,12 @@ export class ComicsListComponent implements OnInit {
 
 	ngOnInit(): void {
 		this._store.dispatch(GetComicsAction());
+	}
+	protected getItem(_event: TComic): CardItem {
+		return {
+			title: _event.title,
+			subTitle: _event.description,
+			src: getSrc(_event.thumbnail)
+		};
 	}
 }

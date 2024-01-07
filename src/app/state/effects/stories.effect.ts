@@ -2,27 +2,27 @@ import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, EMPTY, map, mergeMap } from 'rxjs';
 
-import { ComicService } from '../../services/comics/comic.service';
+import { StoryService } from '../../services/stories/story.service';
 import { TRootObject } from '../../shared/types/root.type';
-import { ComicsAction } from '../actions/comics.action';
+import { StoriesAction } from '../actions/stories.action';
 
 @Injectable()
-export class ComicsEffect {
+export class StoriesEffect {
 	private readonly _action$ = inject(Actions);
-	private readonly _comicService = inject(ComicService);
+	private readonly _storyService = inject(StoryService);
 
-	getComicsEffect$ = createEffect(() =>
+	getStoriesEffect$ = createEffect(() =>
 		this._action$.pipe(
-			ofType(ComicsAction.GET_COMICS),
+			ofType(StoriesAction.GET_STORIES),
 			mergeMap(() =>
-				this._comicService._get().pipe(
+				this._storyService._get().pipe(
 					map((root: unknown) => {
 						const {
 							data: { results }
 						} = root as TRootObject;
 						return {
-							type: ComicsAction.STORE_COMICS,
-							comics: results
+							type: StoriesAction.STORE_STORIES,
+							stories: results
 						};
 					}),
 					catchError(() => EMPTY)

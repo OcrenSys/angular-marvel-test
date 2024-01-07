@@ -1,14 +1,15 @@
 import { Component, Input } from '@angular/core';
 
-import { TComic } from '../../shared/types/comic.type';
+import { TruncatePipe } from '../../pipes/truncate/truncate.pipe';
+import { CardItem } from '../../shared/interfaces/card.item';
 
 @Component({
 	selector: 'app-card',
 	standalone: true,
-	imports: [],
+	imports: [TruncatePipe],
 	templateUrl: './card.component.html',
 	styleUrl: './card.component.css'
 })
 export class CardComponent {
-	@Input() item: TComic | undefined = undefined;
+	@Input() item: CardItem | undefined = undefined;
 }
