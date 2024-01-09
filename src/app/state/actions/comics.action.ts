@@ -1,6 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 
-import { TComic } from '../../shared/types/comic.type';
+import { Params } from '../../shared/interfaces/params';
+import { TData } from '../../shared/types/data.type';
 
 export const ComicsAction = {
 	GET_COMICS: '[Get Comics] Get comics from API',
@@ -8,11 +9,14 @@ export const ComicsAction = {
 	GET_COMIC_BY_ID: '[Get Comic By Id] Get comic details from API'
 };
 
-export const GetComicsAction = createAction(ComicsAction.GET_COMICS);
+export const GetComicsAction = createAction(
+	ComicsAction.GET_COMICS,
+	props<{ params: Params }>()
+);
 
 export const StoreComicsAction = createAction(
 	ComicsAction.STORE_COMICS,
-	props<{ comics: TComic[] }>()
+	props<{ data: TData }>()
 );
 
 export const GetComicByIdAction = createAction(

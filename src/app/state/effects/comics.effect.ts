@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, EMPTY, map, mergeMap } from 'rxjs';
+import { catchError, EMPTY, exhaustMap, map } from 'rxjs';
 
 import { ComicService } from '../../services/comics/comic.service';
 import { TRootObject } from '../../shared/types/root.type';
@@ -14,20 +14,18 @@ export class ComicsEffect {
 	getComicsEffect$ = createEffect(() =>
 		this._action$.pipe(
 			ofType(ComicsAction.GET_COMICS),
-			mergeMap(() =>
-				this._comicService._get().pipe(
+			exhaustMap((response) => {
+				return this._comicService._get({ ...response.params }).pipe(
 					map((root: unknown) => {
-						const {
-							data: { results }
-						} = root as TRootObject;
+						const { data } = root as TRootObject;
 						return {
 							type: ComicsAction.STORE_COMICS,
-							comics: results
+							data: data
 						};
 					}),
 					catchError(() => EMPTY)
-				)
-			)
+				);
+			})
 		)
 	);
 }

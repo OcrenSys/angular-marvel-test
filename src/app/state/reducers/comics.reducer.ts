@@ -1,22 +1,32 @@
 import { createReducer, on } from '@ngrx/store';
 
 import { ComicState } from '../../shared/interfaces/comic.state';
+import { TComic } from '../../shared/types/comic.type';
 import * as ComicsActions from '../actions/comics.action';
 
 const initialState: ComicState = {
-	comics: [],
-	loading: false
+	results: [],
+	loading: false,
+	count: 12,
+	limit: 12,
+	offset: 0,
+	total: 100
 };
 
 export const ComicsReducer = createReducer<ComicState>(
 	initialState,
-	on(ComicsActions.GetComicsAction, (state) => ({
+	on(ComicsActions.GetComicsAction, (state, { params }) => ({
 		...state,
+		...params,
 		loading: true
 	})),
-	on(ComicsActions.StoreComicsAction, (state, { comics }) => ({
-		...state,
-		comics,
-		loading: false
-	}))
+	on(
+		ComicsActions.StoreComicsAction,
+		(state, { data: { results, ..._data } }) => ({
+			...state,
+			..._data,
+			loading: false,
+			results: results as TComic[]
+		})
+	)
 );

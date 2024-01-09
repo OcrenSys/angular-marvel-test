@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { CardComponent } from '../../../components/card/card.component';
-import { ComicService } from '../../../services/comics/comic.service';
-import { TComic } from '../../../shared/types/comic.type';
 
 @Component({
 	selector: 'app-dashboard',
@@ -11,12 +9,4 @@ import { TComic } from '../../../shared/types/comic.type';
 	templateUrl: './dashboard.component.html',
 	styleUrl: './dashboard.component.css'
 })
-export class DashboardComponent implements OnInit {
-	constructor(private readonly _comicService: ComicService) {}
-
-	ngOnInit(): void {
-		this._comicService._get<TComic[]>();
-	}
-
-	protected data: TComic[] = [];
-}
+export class DashboardComponent {}

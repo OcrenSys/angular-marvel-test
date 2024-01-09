@@ -4,8 +4,24 @@
 </div>
 } @else {
 <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-	@for (comic of comics$ | async; track comic.id) {
+	@for (comic of data().results ; track comic.id) {
 	<app-card [item]="getItem(comic)"></app-card>
 	}
 </div>
+
+<mat-paginator
+	#paginator
+	aria-label="select-comics-page"
+	(page)="handlePageEvent($event)"
+	[length]="pageLength()"
+	[pageSize]="pageSize()"
+	[pageIndex]="pageIndex()"
+	[disabled]="pageConfig.disabled"
+	[showFirstLastButtons]="pageConfig.showFirstLastButtons"
+	[hidePageSize]="pageConfig.hidePageSize"
+	[pageSizeOptions]="
+		pageConfig.showPageSizeOptions ? pageConfig.pageSizeOptions : []
+	"
+>
+</mat-paginator>
 }

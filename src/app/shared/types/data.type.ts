@@ -1,9 +1,13 @@
-import { TResult } from './result.type';
+import { TCharacters } from './character.type';
+import { TComic } from './comic.type';
+import { TCreator } from './creator.type';
+import { TEvent } from './event.type';
+import { TStory } from './story.type';
 
 export type TData = {
-	offset: number;
-	limit: number;
-	total: number;
 	count: number;
-	results: TResult[];
+	limit: number;
+	offset: number;
+	total: number;
+	results: TComic[] | TCharacters[] | TStory[] | TEvent[] | TCreator[];
 };
