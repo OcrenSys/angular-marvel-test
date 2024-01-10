@@ -7,9 +7,7 @@ export const comicSelected = (state: AppState): ComicState => state.comics;
 
 export const ComicsSelector = createSelector(
 	comicSelected,
-	(state: ComicState): ComicState => {
-		return state;
-	}
+	(state: ComicState): ComicState => state
 );
 
 export const LoadingSelector = createSelector<AppState, ComicState, boolean>(

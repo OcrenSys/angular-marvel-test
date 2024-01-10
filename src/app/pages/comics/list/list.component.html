@@ -3,25 +3,26 @@
 	<mat-spinner></mat-spinner>
 </div>
 } @else {
-<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-	@for (comic of data().results ; track comic.id) {
-	<app-card [item]="getItem(comic)"></app-card>
-	}
-</div>
+<div class="flex flex-col justify-between w-full min-h-full">
+	<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+		@for (comic of data().results ; track comic.id) {
+		<app-card [item]="getItem(comic)"></app-card>
+		}
+	</div>
 
-<mat-paginator
-	#paginator
-	aria-label="select-comics-page"
-	(page)="handlePageEvent($event)"
-	[length]="pageLength()"
-	[pageSize]="pageSize()"
-	[pageIndex]="pageIndex()"
-	[disabled]="pageConfig.disabled"
-	[showFirstLastButtons]="pageConfig.showFirstLastButtons"
-	[hidePageSize]="pageConfig.hidePageSize"
-	[pageSizeOptions]="
-		pageConfig.showPageSizeOptions ? pageConfig.pageSizeOptions : []
-	"
->
-</mat-paginator>
+	<mat-paginator
+		aria-label="select-comics-page"
+		(page)="handlePageEvent($event)"
+		[length]="pageLength()"
+		[pageSize]="pageSize()"
+		[pageIndex]="pageIndex()"
+		[disabled]="pageConfig.disabled"
+		[showFirstLastButtons]="pageConfig.showFirstLastButtons"
+		[hidePageSize]="pageConfig.hidePageSize"
+		[pageSizeOptions]="
+			pageConfig.showPageSizeOptions ? pageConfig.pageSizeOptions : []
+		"
+	>
+	</mat-paginator>
+</div>
 }

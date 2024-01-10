@@ -14,15 +14,13 @@ export class CharacterEffect {
 	getCharacterEffect$ = createEffect(() =>
 		this._action$.pipe(
 			ofType(CharacterAction.GET_CHARACTERS),
-			mergeMap(() =>
-				this._characterService._get().pipe(
+			mergeMap((response) =>
+				this._characterService._get({ ...response.params }).pipe(
 					map((root: unknown) => {
-						const {
-							data: { results }
-						} = root as TRootObject;
+						const { data } = root as TRootObject;
 						return {
 							type: CharacterAction.STORE_CHARACTERS,
-							characters: results
+							data: data
 						};
 					}),
 					catchError(() => EMPTY)

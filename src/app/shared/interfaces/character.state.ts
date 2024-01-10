@@ -1,6 +1,10 @@
 import { TCharacters } from '../types/character.type';
 
 export interface CharacterState {
-	characters: TCharacters[];
-	loading: boolean;
+	loading?: boolean;
+	count: number;
+	limit: number;
+	offset: number;
+	total: number;
+	results: TCharacters[];
 }

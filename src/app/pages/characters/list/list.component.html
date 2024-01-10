@@ -3,29 +3,46 @@
 	<mat-spinner></mat-spinner>
 </div>
 } @else {
-<div class="grid grid-cols-1 md:grid-cols-6 gap-4">
-	@for (character of characters$ | async; track character.id) {
-	<div class="max-w-sm flex flex-col items-center">
-		<img
-			class="cursor-pointer object-cover w-full h-min-96 md:h-auto md:w-full transform hover:scale-105 transition-transform duration-200"
-			[srcset]="
-				character?.thumbnail?.path + '.' + character?.thumbnail?.extension
-			"
-			alt=""
-		/>
-		<div
-			class="w-full flex flex-col h-52 justify-between p-4 leading-normal bg-[#151515] transition-colors ease-linear duration-300 hover:bg-[#F0131E]"
-		>
-			<h5
-				class="mb-2 capitalize text-xl font-bold tracking-tight text-gray-900 dark:text-white cursor-pointer"
+<div class="flex flex-col justify-between w-full min-h-full">
+	<div class="grid grid-cols-1 md:grid-cols-6 gap-4 pb-2">
+		@for (character of data().results; track character.id) {
+		<div class="max-w-sm overflow-hidden flex flex-col items-center">
+			<img
+				class="cursor-pointer object-cover w-full h-min-96 md:h-auto md:w-full transform hover:scale-105 transition-transform duration-200"
+				[srcset]="getSrc(character)"
+				[alt]="character.name"
+			/>
+			<div
+				class="w-full break-words flex flex-col h-52 justify-between p-4 leading-normal bg-[#151515] transition-colors ease-linear duration-300 hover:bg-[#F0131E]"
 			>
-				{{ character.name | truncate : 20 }}
-			</h5>
-			<p class="mb-3 font-medium text-sm text-gray-700 dark:text-gray-100">
-				{{ character.description | truncate : 80 }}
-			</p>
+				<h5
+					class="mb-2 text-wrap capitalize text-xl font-bold tracking-tight text-gray-900 dark:text-white cursor-pointer"
+				>
+					{{ character.name | truncate : 20 }}
+				</h5>
+				<p
+					class="mb-3 text-wrap text-ellipsis font-medium text-sm text-gray-700 dark:text-gray-100"
+				>
+					{{ character.description | truncate : 80 }}
+				</p>
+			</div>
 		</div>
+		}
 	</div>
-	}
+
+	<mat-paginator
+		aria-label="select-character-page"
+		(page)="handlePageEvent($event)"
+		[length]="pageLength()"
+		[pageSize]="pageSize()"
+		[pageIndex]="pageIndex()"
+		[disabled]="pageConfig.disabled"
+		[showFirstLastButtons]="pageConfig.showFirstLastButtons"
+		[hidePageSize]="pageConfig.hidePageSize"
+		[pageSizeOptions]="
+			pageConfig.showPageSizeOptions ? pageConfig.pageSizeOptions : []
+		"
+	>
+	</mat-paginator>
 </div>
 }

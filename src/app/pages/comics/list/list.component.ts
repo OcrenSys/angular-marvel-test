@@ -7,11 +7,8 @@ import {
 	Signal,
 	signal
 } from '@angular/core';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
@@ -34,9 +31,6 @@ import {
 		CommonModule,
 		MatProgressSpinnerModule,
 		CardComponent,
-		MatFormFieldModule,
-		MatInputModule,
-		MatSlideToggleModule,
 		MatPaginatorModule
 	],
 	templateUrl: './list.component.html',

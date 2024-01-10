@@ -5,6 +5,7 @@ import { TEvent } from './event.type';
 import { TStory } from './story.type';
 
 export type TData = {
+	loading?: boolean;
 	count: number;
 	limit: number;
 	offset: number;
