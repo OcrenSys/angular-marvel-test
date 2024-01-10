@@ -3,9 +3,26 @@
 	<mat-spinner></mat-spinner>
 </div>
 } @else {
-<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-	@for (story of stories$ | async; track story.id) {
-	<app-card [item]="getItem(story)"></app-card>
-	}
+<div class="flex flex-col justify-between w-full min-h-full">
+	<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+		@for (story of data().results ; track story.id) {
+		<app-card [item]="getItem(story)"></app-card>
+		}
+	</div>
+
+	<mat-paginator
+		aria-label="select-creator-page"
+		(page)="handlePageEvent($event)"
+		[length]="pageLength()"
+		[pageSize]="pageSize()"
+		[pageIndex]="pageIndex()"
+		[disabled]="pageConfig.disabled"
+		[showFirstLastButtons]="pageConfig.showFirstLastButtons"
+		[hidePageSize]="pageConfig.hidePageSize"
+		[pageSizeOptions]="
+			pageConfig.showPageSizeOptions ? pageConfig.pageSizeOptions : []
+		"
+	>
+	</mat-paginator>
 </div>
 }

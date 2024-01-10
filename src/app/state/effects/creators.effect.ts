@@ -14,15 +14,13 @@ export class CreatorsEffect {
 	getCreatorsEffect$ = createEffect(() =>
 		this._action$.pipe(
 			ofType(CreatorsAction.GET_CREATORS),
-			mergeMap(() =>
-				this._creatorService._get().pipe(
+			mergeMap((response) =>
+				this._creatorService._get({ ...response.params }).pipe(
 					map((root: unknown) => {
-						const {
-							data: { results }
-						} = root as TRootObject;
+						const { data } = root as TRootObject;
 						return {
 							type: CreatorsAction.STORE_CREATORS,
-							creators: results
+							data: data
 						};
 					}),
 					catchError(() => EMPTY)

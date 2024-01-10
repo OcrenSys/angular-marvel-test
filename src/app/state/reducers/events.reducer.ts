@@ -1,11 +1,16 @@
 import { createReducer, on } from '@ngrx/store';
 
 import { EventState } from '../../shared/interfaces/event.state';
-import { GetEventsAction, StoreEventsAction } from '../actions/events,action';
+import { TEvent } from '../../shared/types/event.type';
+import { GetEventsAction, StoreEventsAction } from '../actions/events.action';
 
 const initialState: EventState = {
-	events: [],
-	loading: false
+	results: [],
+	loading: false,
+	count: 12,
+	limit: 12,
+	offset: 0,
+	total: 100
 };
 
 export const EventsReducer = createReducer<EventState>(
@@ -14,9 +19,10 @@ export const EventsReducer = createReducer<EventState>(
 		...state,
 		loading: true
 	})),
-	on(StoreEventsAction, (state, { events }) => ({
+	on(StoreEventsAction, (state, { data: { results, ..._data } }) => ({
 		...state,
-		events,
-		loading: false
+		..._data,
+		loading: false,
+		results: results as TEvent[]
 	}))
 );

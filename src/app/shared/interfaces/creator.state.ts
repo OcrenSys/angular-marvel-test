@@ -1,6 +1,10 @@
 import { TCreator } from '../types/creator.type';
 
 export interface CreatorState {
-	creators: TCreator[];
-	loading: boolean;
+	loading?: boolean;
+	count: number;
+	limit: number;
+	offset: number;
+	total: number;
+	results: TCreator[];
 }

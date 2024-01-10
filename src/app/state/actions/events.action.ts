@@ -1,6 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 
-import { TEvent } from '../../shared/types/event.type';
+import { Params } from '../../shared/interfaces/params';
+import { TData } from '../../shared/types/data.type';
 
 export const EventsAction = {
 	GET_EVENTS: '[Get Events] Get events from API',
@@ -8,11 +9,14 @@ export const EventsAction = {
 	GET_EVENT_BY_ID: '[Get Event By Id] Get event details from API'
 };
 
-export const GetEventsAction = createAction(EventsAction.GET_EVENTS);
+export const GetEventsAction = createAction(
+	EventsAction.GET_EVENTS,
+	props<{ params: Params }>()
+);
 
 export const StoreEventsAction = createAction(
 	EventsAction.STORE_EVENTS,
-	props<{ events: TEvent[] }>()
+	props<{ data: TData }>()
 );
 
 export const GetEventByIdAction = createAction(

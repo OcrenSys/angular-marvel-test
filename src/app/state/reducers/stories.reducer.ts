@@ -1,14 +1,19 @@
 import { createReducer, on } from '@ngrx/store';
 
 import { StoryState } from '../../shared/interfaces/story.state';
+import { TStory } from '../../shared/types/story.type';
 import {
 	GetStoriesAction,
 	StoreStoriesAction
 } from '../actions/stories.action';
 
 const initialState: StoryState = {
-	stories: [],
-	loading: false
+	results: [],
+	loading: false,
+	count: 12,
+	limit: 12,
+	offset: 0,
+	total: 100
 };
 
 export const StoryReducer = createReducer<StoryState>(
@@ -17,9 +22,10 @@ export const StoryReducer = createReducer<StoryState>(
 		...state,
 		loading: true
 	})),
-	on(StoreStoriesAction, (state, { stories }) => ({
+	on(StoreStoriesAction, (state, { data: { results, ..._data } }) => ({
 		...state,
-		stories,
-		loading: false
+		..._data,
+		loading: false,
+		results: results as TStory[]
 	}))
 );

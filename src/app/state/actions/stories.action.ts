@@ -1,6 +1,7 @@
+import { Params } from '@angular/router';
 import { createAction, props } from '@ngrx/store';
 
-import { TStory } from '../../shared/types/story.type';
+import { TData } from '../../shared/types/data.type';
 
 export const StoriesAction = {
 	GET_STORIES: '[Get Stories] Get stories from API',
@@ -8,11 +9,14 @@ export const StoriesAction = {
 	GET_STORY_BY_ID: '[Get Story By Id] Get story details from API'
 };
 
-export const GetStoriesAction = createAction(StoriesAction.GET_STORIES);
+export const GetStoriesAction = createAction(
+	StoriesAction.GET_STORIES,
+	props<{ params: Params }>()
+);
 
 export const StoreStoriesAction = createAction(
 	StoriesAction.STORE_STORIES,
-	props<{ stories: TStory[] }>()
+	props<{ data: TData }>()
 );
 
 export const GetStoryByIdAction = createAction(

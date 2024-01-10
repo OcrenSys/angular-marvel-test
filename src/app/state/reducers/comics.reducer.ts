@@ -2,7 +2,7 @@ import { createReducer, on } from '@ngrx/store';
 
 import { ComicState } from '../../shared/interfaces/comic.state';
 import { TComic } from '../../shared/types/comic.type';
-import * as ComicsActions from '../actions/comics.action';
+import { GetComicsAction, StoreComicsAction } from '../actions/comics.action';
 
 const initialState: ComicState = {
 	results: [],
@@ -15,18 +15,15 @@ const initialState: ComicState = {
 
 export const ComicsReducer = createReducer<ComicState>(
 	initialState,
-	on(ComicsActions.GetComicsAction, (state, { params }) => ({
+	on(GetComicsAction, (state, { params }) => ({
 		...state,
 		...params,
 		loading: true
 	})),
-	on(
-		ComicsActions.StoreComicsAction,
-		(state, { data: { results, ..._data } }) => ({
-			...state,
-			..._data,
-			loading: false,
-			results: results as TComic[]
-		})
-	)
+	on(StoreComicsAction, (state, { data: { results, ..._data } }) => ({
+		...state,
+		..._data,
+		loading: false,
+		results: results as TComic[]
+	}))
 );

@@ -14,15 +14,13 @@ export class StoriesEffect {
 	getStoriesEffect$ = createEffect(() =>
 		this._action$.pipe(
 			ofType(StoriesAction.GET_STORIES),
-			mergeMap(() =>
-				this._storyService._get().pipe(
+			mergeMap((response) =>
+				this._storyService._get({ ...response.params }).pipe(
 					map((root: unknown) => {
-						const {
-							data: { results }
-						} = root as TRootObject;
+						const { data } = root as TRootObject;
 						return {
 							type: StoriesAction.STORE_STORIES,
-							stories: results
+							data: data
 						};
 					}),
 					catchError(() => EMPTY)

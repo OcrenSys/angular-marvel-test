@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { Params } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { Routes } from '../../shared/routes/route';
@@ -15,8 +16,12 @@ export class StoryService extends BaseService {
 		super(Routes.stories.list());
 	}
 
-	_get<R>(): Observable<R> {
-		return this._httpClient.get<R>(this.Url());
+	_get<R>(params: Params): Observable<R> {
+		let _httpParams = new HttpParams();
+		Object.entries(params).map(([key, value]) => {
+			_httpParams = _httpParams.set(key, value);
+		});
+		return this._httpClient.get<R>(this.Url(), { params: _httpParams });
 	}
 
 	_getById<T>(id: string): Observable<T> {
